@@ -1,1 +1,1 @@
-# react-redux-boilerplate
+# react-messaging-app
