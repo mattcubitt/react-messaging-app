@@ -1,13 +1,18 @@
 import './app.scss'
 
-import React from 'react';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
+import ChatContainer from './chat/ChatContainer'
+import messagesReducer from './chat/messagesReducer'
+import messageTextReducer from './chat/messageTextReducer'
 
 var reducers = {
+    messages: messagesReducer,
+    messageText: messageTextReducer
 };
 
 var rootReducer = combineReducers(reducers);
@@ -27,7 +32,7 @@ var configureStore = function configureStore(initialState) {
 
 render(
     <Provider store={configureStore()}>
-        <div className="message">hello</div>
+        <ChatContainer/>
     </Provider>,
     document.getElementById('app')
 );
